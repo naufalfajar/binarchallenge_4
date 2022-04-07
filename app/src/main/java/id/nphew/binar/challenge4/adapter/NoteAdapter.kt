@@ -42,14 +42,14 @@ class NoteAdapter(private val onDelete : (Note) -> Unit,
     override fun getItemCount(): Int = differ.currentList.size
 
     inner class NoteViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        private val tvName: TextView = view.findViewById(R.id.tv_name_value)
-        private val tvEmail: TextView = view.findViewById(R.id.tv_email_value)
+        private val tvTitle: TextView = view.findViewById(R.id.tv_title_value)
+        private val tvNote: TextView = view.findViewById(R.id.tv_note_value)
         private val btnDelete: ImageView = view.findViewById(R.id.btn_delete)
         private val btnEdit: ImageView = view.findViewById(R.id.btn_edit)
 
         fun bind(note: Note) {
-            tvName.text = note.title
-            tvEmail.text = note.note
+            tvTitle.text = note.title
+            tvNote.text = note.note
 
             btnDelete.setOnClickListener {
                 onDelete.invoke(note)

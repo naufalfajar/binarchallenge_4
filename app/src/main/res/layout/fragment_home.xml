@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/home_color"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".HomeFragment">
 
@@ -22,12 +23,16 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:textColor="@color/binar_color"
+            android:textColorHint="@color/binar_color"
             android:hint="@string/welcome_username" />
         <TextView
             android:id="@+id/tv_home_logout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:textColorHint="@color/binar_color"
+            android:textColor="@color/binar_color"
             android:textAlignment="textEnd"
             android:hint="@string/logout" />
     </LinearLayout>
@@ -38,6 +43,7 @@
         android:text="@string/home"
         android:layout_marginTop="20dp"
         android:textSize="20sp"
+        android:textStyle="bold"
         android:textColor="@color/black"
         app:layout_constraintTop_toBottomOf="@id/ll_home"
         app:layout_constraintStart_toStartOf="parent"

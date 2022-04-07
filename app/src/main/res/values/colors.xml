@@ -9,4 +9,6 @@
     <color name="white">#FFFFFFFF</color>
     <color name="binar_color">#733572</color>
     <color name="grey_etborder">#D5D8DC</color>
+    <color name="home_color">#F1ECFE</color>
+
 </resources>

@@ -16,4 +16,6 @@
     <string name="logout">Logout</string>
     <string name="home">Home</string>
     <string name="button_add">button add</string>
+    <string name="title">Title</string>
+    <string name="write_a_note_here">Write a note here..</string>
 </resources>
