@@ -10,10 +10,8 @@ import androidx.navigation.findNavController
 import id.nphew.binar.challenge4.database.Account
 import id.nphew.binar.challenge4.database.AccountDatabase
 import id.nphew.binar.challenge4.databinding.FragmentRegisterBinding
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
+import kotlinx.coroutines.*
+import kotlinx.coroutines.android.awaitFrame
 
 class RegisterFragment : Fragment() {
     private var _binding: FragmentRegisterBinding? = null

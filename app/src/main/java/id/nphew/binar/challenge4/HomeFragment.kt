@@ -1,6 +1,8 @@
 package id.nphew.binar.challenge4
 
 import android.content.Context
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -8,6 +10,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.navigation.findNavController
@@ -111,6 +114,10 @@ class HomeFragment : Fragment() {
         val btnSave = customLayout.findViewById<Button>(R.id.btn_save)
 
         if (note != null) {
+            val tvCrud = customLayout.findViewById<TextView>(R.id.tv_crud)
+            tvCrud.text = "Edit Data"
+            btnSave.text = "Update"
+
             etTitle.setText(note.title)
             etNote.setText(note.note)
         }
@@ -134,6 +141,29 @@ class HomeFragment : Fragment() {
             dialog.dismiss()
         }
         dialog.show()
+        dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+//        dialog.window?.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT)
+    }
+
+    private fun showDeleteAlertDialog(note: Note){
+        val customLayout = LayoutInflater.from(requireContext()).inflate(R.layout.layout_dialog_delete, null, false)
+        val btnDelete = customLayout.findViewById<Button>(R.id.btn_dialog_delete)
+        val btnCancel = customLayout.findViewById<Button>(R.id.btn_dialog_cancel)
+
+        val builder = AlertDialog.Builder(requireContext())
+        builder.setView(customLayout)
+        val dialog = builder.create()
+
+        btnDelete.setOnClickListener {
+            deleteToDb(note)
+            dialog.dismiss()
+        }
+        btnCancel.setOnClickListener {
+            dialog.dismiss()
+        }
+        dialog.show()
+        dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        dialog.window?.setLayout(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT)
     }
 
     private fun saveToDb(judul: String, isi: String) {
@@ -189,22 +219,26 @@ class HomeFragment : Fragment() {
         }
     }
 
-    private val action = object : NoteActionListener {
-        override fun onDelete(Note: Note) {
-            CoroutineScope(Dispatchers.IO).launch {
-                val result = accountDb?.noteDao()?.deleteNote(Note)
-                if (result != 0) {
-                    getDataFromDb()
-                    CoroutineScope(Dispatchers.Main).launch {
-                        Toast.makeText(requireContext(), "Berhasil Dihapus", Toast.LENGTH_SHORT)
-                            .show()
-                    }
-                } else {
-                    CoroutineScope(Dispatchers.Main).launch {
-                        Toast.makeText(requireContext(), "Gagal Dihapus", Toast.LENGTH_SHORT).show()
-                    }
+    private fun deleteToDb(note: Note){
+        CoroutineScope(Dispatchers.IO).launch {
+            val result = accountDb?.noteDao()?.deleteNote(note)
+            if (result != 0) {
+                getDataFromDb()
+                CoroutineScope(Dispatchers.Main).launch {
+                    Toast.makeText(requireContext(), "Berhasil Dihapus", Toast.LENGTH_SHORT)
+                        .show()
+                }
+            } else {
+                CoroutineScope(Dispatchers.Main).launch {
+                    Toast.makeText(requireContext(), "Gagal Dihapus", Toast.LENGTH_SHORT).show()
                 }
             }
+        }
+    }
+
+    private val action = object : NoteActionListener {
+        override fun onDelete(Note: Note) {
+            showDeleteAlertDialog(Note)
         }
         override fun onEdit(Note: Note) {
             showAlertDialog(Note)

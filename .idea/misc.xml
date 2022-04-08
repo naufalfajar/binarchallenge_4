@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/naufa/AndroidStudioProjects/Challenge4/app/src/main/res/drawable/border_dialog.xml" value="0.121" />
         <entry key="..\:/Users/naufa/AndroidStudioProjects/Challenge4/app/src/main/res/drawable/et_border.xml" value="0.137" />
         <entry key="..\:/Users/naufa/AndroidStudioProjects/Challenge4/app/src/main/res/drawable/ic_android.xml" value="0.1785" />
         <entry key="..\:/Users/naufa/AndroidStudioProjects/Challenge4/app/src/main/res/drawable/ic_android_black_24dp.xml" value="0.1785" />
@@ -22,7 +23,8 @@
         <entry key="..\:/Users/naufa/AndroidStudioProjects/Challenge4/app/src/main/res/layout/fragment_test.xml" value="0.264" />
         <entry key="..\:/Users/naufa/AndroidStudioProjects/Challenge4/app/src/main/res/layout/item_contact.xml" value="0.264" />
         <entry key="..\:/Users/naufa/AndroidStudioProjects/Challenge4/app/src/main/res/layout/item_note.xml" value="0.264" />
-        <entry key="..\:/Users/naufa/AndroidStudioProjects/Challenge4/app/src/main/res/layout/layout_dialog_add.xml" value="0.2" />
+        <entry key="..\:/Users/naufa/AndroidStudioProjects/Challenge4/app/src/main/res/layout/layout_dialog_add.xml" value="0.264" />
+        <entry key="..\:/Users/naufa/AndroidStudioProjects/Challenge4/app/src/main/res/layout/layout_dialog_delete.xml" value="0.2694746376811594" />
       </map>
     </option>
   </component>
